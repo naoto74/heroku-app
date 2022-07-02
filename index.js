@@ -1,11 +1,13 @@
-const http = require('http');
+var express = require('express');
+var app = express();
 
-const PORT = process.env.PORT || 3000;
-const server = http.createServer((request, response) => {
-  response.writeHead(200);
-  response.write('Hello!');
-  response.end();
+app.set('port', (process.env.PORT || 5000));
+app.use(express.static(__dirname + '/public'));
+
+app.get('/', function(request, response) {
+  response.send('Hello World!')
 });
-server.listen(PORT, () => {
-  console.log(`http://localhost:${PORT}`);
+
+app.listen(app.get('port'), function() {
+  console.log("Node app is running at localhost:" + app.get('port'))
 });
