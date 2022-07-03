@@ -10,7 +10,6 @@
     <input type="text" id="sendinput" value="文字列">
     <input type="button" id="sendbutton" value="送る">
     <script>
-        var SSL = location.protocol=="https:";
         var WSURL = (location.protocol=="http:") ? "ws://localhost:8000":"wss://naoto74.herokuapp.com";
         var sendinput = document.getElementById("sendinput");
         var sendbutton = document.getElementById("sendbutton");
