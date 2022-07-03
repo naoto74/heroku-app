@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>websocket</title>
+</head>
+<body>
+    <input type="text" id="sendinput" value="文字列">
+    <input type="button" id="sendbutton" value="送る">
+    <script>
+        var SSL = location.protocol=="https:";
+        var WSURL = (location.protocol=="http:") ? "ws://localhost:8000":"wss://naoto74.herokuapp.com";
+        var sendinput = document.getElementById("sendinput");
+        var sendbutton = document.getElementById("sendbutton");
+        var ws = new WebSocket(WSURL);
+        ws.onmessage=e=>console.log(e.data);
+        sendbutton.onclick = function(){
+            ws.send(sendinput.value);
+        }
+    </script>
+</body>
+</html>
